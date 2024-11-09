@@ -11,28 +11,28 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.0.0'
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: '20.0.0'
 
-      - name: Build code
-        run: |
-          npm install
-          npm run build
+      # - name: Build code
+      #   run: |
+      #     npm install
+      #     npm run build
 
-      - name: Checking built artifact
-        run: ls -la
+      # - name: Checking built artifact
+      #   run: ls -la
 
-      - name: Building Docker Image
-        run: |
-          docker build -t ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest .
-          docker images
+      # - name: Building Docker Image
+      #   run: |
+      #     docker build -t ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest .
+      #     docker images
 
-      - name: Login and push to Docker Hub
-        run: |
-          echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
-          docker push ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest
+      # - name: Login and push to Docker Hub
+      #   run: |
+      #     echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
+      #     docker push ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest
 
       - name: Set up known hosts
         run: |
@@ -42,8 +42,8 @@ jobs:
           echo "${{ secrets.OCTAVIAN_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ls -la
-          cat /.ssh/id_rsa
-          cat /.ssh/known_hosts
+          cat ~/.ssh/id_rsa
+          cat ~/.ssh/known_hosts
 
             - name: Pull and run docker container
 
