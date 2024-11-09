@@ -42,8 +42,10 @@ jobs:
           echo "${{ secrets.OCTAVIAN_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ls -la
-          cat ~/.ssh/id_rsa
-          cat ~/.ssh/known_hosts
+          cd ~/.ssh
+          ls -la
+          # cat ~/.ssh/id_rsa
+          # cat ~/.ssh/known_hosts
 
             - name: Pull and run docker container
 
