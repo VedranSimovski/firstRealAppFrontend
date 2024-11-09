@@ -13,7 +13,7 @@ const BackendApiTest = () => {
 
     setLoading(true);
 
-    axios.get('http://localhost:8080/api/test/next/1')
+    axios.get('http://first-real-app-container:8080/api/test/next/1')
       .then(response => {
         console.log(response.data); // "Hello from Spring!"
         setData(response.data);
