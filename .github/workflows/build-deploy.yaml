@@ -34,4 +34,21 @@ jobs:
           echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
           docker push ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest
 
+      - name: Set up known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan ${{ secrets.OCTAVIAN_IP_ADDRESS }} > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts  # Set proper permissions
+          echo "${{ secrets.OCTAVIAN_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ls -la
+          cat /.ssh/id_rsa
+          cat /.ssh/known_hosts
+
+            - name: Pull and run docker container
+
+      - name: Loggin into docker registry
+        run: |
+          echo "Logging in to Docker registry..."
+          ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin'
 
