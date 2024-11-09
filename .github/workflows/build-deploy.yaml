@@ -28,3 +28,10 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest .
           docker images
+
+      - name: Login and push to Docker Hub
+        run: |
+          echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
+          docker push ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest
+
+
