@@ -23,3 +23,8 @@ jobs:
 
       - name: Checking built artifact
         run: ls -la
+
+      - name: Building Docker Image
+        run: |
+          docker build -t ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest .
+          docker images
