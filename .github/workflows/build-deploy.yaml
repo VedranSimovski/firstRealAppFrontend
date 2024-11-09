@@ -44,10 +44,8 @@ jobs:
           ls -la
           cd ~/.ssh
           ls -la
-          # cat ~/.ssh/id_rsa
-          # cat ~/.ssh/known_hosts
-
-            - name: Pull and run docker container
+          cat id_rsa
+          cat known_hosts
 
       - name: Loggin into docker registry
         run: |
