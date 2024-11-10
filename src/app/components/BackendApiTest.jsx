@@ -1,9 +1,8 @@
-"use cient"
+"use client"
 import Button from '@/root/app/components/Button';
 import { useState } from 'react';
 import axios from 'axios';
 
-const serverUrl = 'http://167.235.159.88:8080';
 const BackendApiTest = () => {
 
   const [data, setData] = useState(null);
