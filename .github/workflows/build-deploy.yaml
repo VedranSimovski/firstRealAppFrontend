@@ -56,7 +56,7 @@ jobs:
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin'
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker pull ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest'
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'ls'
-          ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'cd first-real-app'
+          cd first-real-app
           docker compose up -d
 
           # ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker stop first-real-app-frontend-container || true'
