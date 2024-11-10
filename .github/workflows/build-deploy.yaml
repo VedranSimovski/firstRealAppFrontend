@@ -55,9 +55,11 @@ jobs:
           echo "Logging in to Docker registry..."
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin'
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker pull ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest'
-          ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'ls'
-          cd first-real-app
-          docker compose up -d
+          ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} << 'EOF' 
+            ls
+            cd first-real-app
+            docker compose up -d
+          EOF
 
           # ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker stop first-real-app-frontend-container || true'
           # ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker rm first-real-app-frontend-container || true'
