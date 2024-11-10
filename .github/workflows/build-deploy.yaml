@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
+      # - name: Check out code
+      #   uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.0.0'
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: '20.0.0'
 
       # - name: Build code
       #   run: |
@@ -57,6 +57,7 @@ jobs:
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker pull ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest'
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'ls'
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'cd first-real-app'
+          ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'ls'
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker compose up -d'
 
           # ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker stop first-real-app-frontend-container || true'
