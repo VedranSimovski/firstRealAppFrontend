@@ -19,23 +19,23 @@ jobs:
         with:
           node-version: '20.0.0'
 
-      - name: Build code
-        run: |
-          npm install
-          npm run build
+      # - name: Build code
+      #   run: |
+      #     npm install
+      #     npm run build
 
-      - name: Checking built artifact
-        run: ls -la
+      # - name: Checking built artifact
+      #   run: ls -la
 
-      - name: Building Docker Image
-        run: |
-          docker build -t ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest .
-          docker images
+      # - name: Building Docker Image
+      #   run: |
+      #     docker build -t ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest .
+      #     docker images
 
-      - name: Login and push to Docker Hub
-        run: |
-          echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
-          docker push ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest
+      # - name: Login and push to Docker Hub
+      #   run: |
+      #     echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
+      #     docker push ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest
 
       - name: Set up known hosts
         run: |
@@ -55,6 +55,7 @@ jobs:
           echo "Logging in to Docker registry..."
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin'
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker pull ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest'
+          ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'ls'
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'cd ~/first-real-app'
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker compose up -d'
 
