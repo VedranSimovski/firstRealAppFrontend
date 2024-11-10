@@ -14,7 +14,7 @@ const BackendApiTest = () => {
 
     setLoading(true);
 
-    axios.get(serverUrl + '/api/test/next/1')
+    axios.get('http://167.235.159.88:8080/api/test/next/1')
       .then(response => {
         console.log(response.data); // "Hello from Spring!"
         setData(response.data);
