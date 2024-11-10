@@ -1,8 +1,9 @@
-"use client"
+"use cient"
 import Button from '@/root/app/components/Button';
 import { useState } from 'react';
 import axios from 'axios';
 
+const serverUrl = 'http://167.235.159.88:8080';
 const BackendApiTest = () => {
 
   const [data, setData] = useState(null);
@@ -13,7 +14,7 @@ const BackendApiTest = () => {
 
     setLoading(true);
 
-    axios.get('http://localhost:8080/api/test/next/1')
+    axios.get(serverUrl + '/api/test/next/1')
       .then(response => {
         console.log(response.data); // "Hello from Spring!"
         setData(response.data);
