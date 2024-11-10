@@ -57,8 +57,7 @@ jobs:
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker pull ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest'
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'ls'
           ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'cd first-real-app'
-          ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'ls'
-          ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker compose up -d'
+          docker compose up -d
 
           # ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker stop first-real-app-frontend-container || true'
           # ssh ${{ secrets.OCTAVIAN_GITHUB_USER }}@${{ secrets.OCTAVIAN_IP_ADDRESS }} 'docker rm first-real-app-frontend-container || true'
