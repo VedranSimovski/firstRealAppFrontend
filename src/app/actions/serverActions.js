@@ -2,8 +2,6 @@
 
 export const submitFormData = async (formData) => {
 
-  console.log(process.env.SERVER_BACKEND_URL);
-
   const response = await fetch(`${process.env.SERVER_BACKEND_URL}/db/save/firstentry`, {
     method: 'POST',
     headers: {
