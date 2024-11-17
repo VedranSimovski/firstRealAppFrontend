@@ -28,9 +28,11 @@ jobs:
         run: ls -la
 
       - name: Building Docker Image 
+        env:
+          OCTAVIAN_IP_ADDRESS: ${{ secrets.OCTAVIAN_IP_ADDRESS }}
         run: |
           docker build \ 
-            --build-arg OCTAVIAN_IP_ADDRESS=${{ secrets.OCTAVIAN_IP_ADDRESS }} \
+            --build-arg OCTAVIAN_IP_ADDRESS=${ env.OCTAVIAN_IP_ADDRESS } \
             -t ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest .
           docker images
 
