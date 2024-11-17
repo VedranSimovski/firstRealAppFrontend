@@ -14,6 +14,8 @@ const BackendApiTest = () => {
 
     setLoading(true);
 
+    console.log("next public client backend url: ", process.env.NEXT_PUBLIC_CLIENT_BACKEND_URL)
+
     axios.get(`${process.env.NEXT_PUBLIC_CLIENT_BACKEND_URL}/api/test/next/1`)
       .then(response => {
         console.log(response.data); // "Hello from Spring!"
