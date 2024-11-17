@@ -2,6 +2,7 @@
 import Button from '@/root/app/components/Button';
 import { useState } from 'react';
 import axios from 'axios';
+import ContentForm from '@/root/app/components/ContentForm';
 
 const BackendApiTest = () => {
 
@@ -13,7 +14,7 @@ const BackendApiTest = () => {
 
     setLoading(true);
 
-    axios.get('http://167.235.159.88:8080/api/test/next/1')
+    axios.get(`${process.env.NEXT_PUBLIC_CLIENT_BACKEND_URL}/api/test/next/1`)
       .then(response => {
         console.log(response.data); // "Hello from Spring!"
         setData(response.data);
@@ -35,6 +36,7 @@ const BackendApiTest = () => {
     <>
       <Button name = {'Test Backend API'} handleSubmit = {handleSubmit}/>
       <Button name = {'Clear'} handleSubmit = {handleClear}/>
+      <ContentForm/>
 
       {
         loading && (<p>Loading...</p>)
