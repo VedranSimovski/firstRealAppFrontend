@@ -32,7 +32,7 @@ jobs:
       #     OCTAVIAN_IP_ADDRESS: ${{ secrets.OCTAVIAN_IP_ADDRESS }}
         run: |
           OCTAVIAN_IP_ADDRESS=${{ secrets.OCTAVIAN_IP_ADDRESS }}
-          docker build --build-arg OCTAVIAN_IP_ADDRESS=${ OCTAVIAN_IP_ADDRESS } -t ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest .
+          docker build --build-arg OCTAVIAN_IP_ADDRESS=${OCTAVIAN_IP_ADDRESS} -t ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest .
           docker images
 
       - name: Login and push to Docker Hub
