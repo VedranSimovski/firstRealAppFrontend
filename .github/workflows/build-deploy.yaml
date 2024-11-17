@@ -27,9 +27,12 @@ jobs:
       - name: Checking built artifact
         run: ls -la
 
-      - name: Building Docker Image
+      - name: Building Docker Image 
+      #   env:
+      #     OCTAVIAN_IP_ADDRESS: ${{ secrets.OCTAVIAN_IP_ADDRESS }}
         run: |
-          docker build -t ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest .
+          OCTAVIAN_IP_ADDRESS=${{ secrets.OCTAVIAN_IP_ADDRESS }}
+          docker build --build-arg OCTAVIAN_IP_ADDRESS=${OCTAVIAN_IP_ADDRESS} -t ${{ secrets.DOCKER_REPOSITORY }}:first-real-app-frontend-latest .
           docker images
 
       - name: Login and push to Docker Hub
